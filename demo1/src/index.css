@@ -1,0 +1,11 @@
+body{
+	background: red;
+}
+div{
+	background-image: url('./success.png');
+	background-size: 100% 100%;
+	/* background-size: contain; */
+/* 	background-repeat: no-repeat; */
+	width: 170px;
+	height: 220px;
+}
