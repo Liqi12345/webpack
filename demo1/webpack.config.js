@@ -2,6 +2,9 @@ const path = require('path')
 const uglify = require('uglifyjs-webpack-plugin')
 const htmlplugin = require('html-webpack-plugin')
 const minicss = require('mini-css-extract-plugin')
+var website = {
+	path:'http://192.168.1.104:8080/'
+}
 module.exports = {
 	entry:{
 		entry:'./src/main.js'
@@ -9,6 +12,7 @@ module.exports = {
 	output:{
 		path:path.resolve(__dirname,'dist'),
 		filename:'[name].js',
+		publicPath:website.path
 
 	},
 	module:{
@@ -32,14 +36,19 @@ module.exports = {
 					options:{
 						limit:50000,
 						name:'image/[name].[hash:7].[ext]',
+
 					}
 				}]
+			},
+			{
+				test:/\.(htm|html)$/i,
+    			use:['html-withimg-loader']
 			}
 		]
 	},
 	devServer:{
 		contentBase:path.resolve(__dirname,'dist'),
-		host:'192.168.3.38',
+		host:'192.168.1.104',
 		compress:true,
 		port:8080
 	},
